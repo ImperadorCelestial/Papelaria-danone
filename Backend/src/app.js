@@ -19,7 +19,7 @@ app.get("/health", (req, res)=> res.json({ok: true}));
 app.use("/auth", authRoutes);
 app.use("/users", userRoutes);
 app.use("/produto", produtoRoutes)
-//app.use("/items", itemRoutes);
+
 
 app.use(errorHandler);
 

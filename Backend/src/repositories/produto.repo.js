@@ -8,4 +8,11 @@ async function list(id) {
   return rows;
 }
 
-module.exports = list
+async function create(nome, descricao, categoria, imagemUrl, estoque, preco) {
+  const [rows] = await db.query(
+    "INSERT INTO produtos (nome, descricao, categoria, imagemUrl, estoque, preco) = ?, ?, ?, ?, ?, ?",
+    [nome, descricao || null, categoria || null, imagemUrl || null, estoque, preco]
+  )
+}
+
+module.exports = {list, create}

@@ -7,4 +7,12 @@ async function list(req, res, next) {
     } catch (e) { next(e); } 
 }
 
-module.exports = {list}
+async function create(req, res, next) {
+    try {
+        const {nome, descricao, categoria, imagemUrl, estoque, preco} = req.body;
+        await repo.create(nome, descricao || null, categoria || null, imagemUrl || null, estoque, preco);
+        res.status(201).json({ message: "Produto criado" });
+    } catch (e) { next(e); }
+}
+
+module.exports = {list, create}
